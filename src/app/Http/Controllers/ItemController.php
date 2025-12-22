@@ -129,8 +129,10 @@ class ItemController extends Controller
     public function  profileSell(Request $request)
     {
         $user = auth()->user();
-        $profile = User::where('id', $user->id)->first();
-        $profile = Profile::where('user_id', $user->id)->first();
+
+        $profile = Profile::firstOrNew(['user_id' => $user->id]);
+       // $profile = User::where('id', $user->id)->first();
+        //$profile = Profile::where('user_id', $user->id)->first();
         $listedItems  = Item::where('user_id', $user->id)->latest()->paginate(8);
         //dd($user->id);
         return view('item.profilesell', compact('user', 'listedItems', 'profile'));

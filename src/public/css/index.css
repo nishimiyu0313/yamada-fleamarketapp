@@ -4,13 +4,13 @@
 .toppage-list {
     font-size: 20px;
     display: flex;
-    height: 47px;    
+    height: 47px;
     top: 127px;
     border-bottom: 1px solid #000;
-} 
- 
+}
+
 .toppage-list h3 {
-  margin: 0;
+    margin: 0;
 }
 
 .recommend {
@@ -47,19 +47,13 @@
 }
 
 @media screen and (min-width: 1400px) and (max-width: 1540px) {
- .products-row {
-        grid-template-columns: repeat(4, 1fr); 
+    .products-row {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
-
-
-
 @media screen and (max-width: 850px) {
     .products-row {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
     }
-   
-    
-    
 }

@@ -36,8 +36,6 @@ Route::group(['middleware' => ['auth', 'verified']],function () {
     Route::post('/sell', [ItemController::class, 'sell']);
     Route::get('/mypage/buy', [ItemController::class, 'profileBuy'])->name('item.profilebuy');
     Route::get('/mypage/sell', [ItemController::class, 'profileSell']);
-   
-
 
 
     Route::get('/mypage/profile', [ProfileController::class, 'index']);
