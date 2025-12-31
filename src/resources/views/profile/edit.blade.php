@@ -22,10 +22,7 @@
                     @error('image')
                     {{ $message }}
                     @enderror
-
                 </div>
-
-
             </div>
             <div class="form__group">
                 <div class="form__group-title">
@@ -71,8 +68,6 @@
                         @error('address')
                         {{ $message }}
                         @enderror
-
-
                     </div>
                 </div>
             </div>
@@ -85,11 +80,9 @@
                         <input type="text" name="building" value="{{ old('building', $profile->building) }}" />
                     </div>
                     <div class="form__error">
-
                     </div>
                 </div>
             </div>
-
             <input class="profile-form__btn" type="submit" value="更新する">
         </form>
     </div>

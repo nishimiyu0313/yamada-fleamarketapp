@@ -102,12 +102,6 @@
                 @enderror
             </div>
         </div>
-
-
-
-
     </div>
-
-
 </div>
 @endsection

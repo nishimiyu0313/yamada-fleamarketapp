@@ -44,7 +44,7 @@ class UsergetTest extends TestCase
             'is_sold' => true,
         ]);
 
-      
+
         foreach ($itemsPurchased as $item) {
             Payment::factory()->create([
                 'user_id' => $user->id,
@@ -74,6 +74,6 @@ class UsergetTest extends TestCase
 
         foreach ($itemsForSale as $item) {
             $sellResponse->assertSee($item->name);
-        }   
+        }
     }
 }

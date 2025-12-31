@@ -34,7 +34,5 @@
             {{ $items->links('vendor.pagination.semantic-ui') }}
         </div>
     </div>
-
-
 </div>
 @endsection

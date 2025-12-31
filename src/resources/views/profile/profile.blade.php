@@ -14,19 +14,16 @@
             @csrf
             <div class="profile__image">
                 <img src=" {{ isset($profile['image']) ? 
-asset('storage/' . $profile['image']) : asset('img/default.jpg') }}"
+                asset('storage/' . $profile['image']) : asset('img/default.jpg') }}"
                     alt="アイコン画像" class="profile-icon" id="preview">
                 <label for="image" class="file-button">画像を選択する</label>
                 <input type="file" id="image" name="image" class="file-input">
                 <script src="{{ asset('js/image-preview.js') }}"></script>
-
                 <div class="form__error">
                     @error('image')
                     {{ $message }}
                     @enderror
                 </div>
-
-
             </div>
             <div class="form__group">
                 <div class="form__group-title">
@@ -40,7 +37,6 @@ asset('storage/' . $profile['image']) : asset('img/default.jpg') }}"
                         @error('name')
                         {{ $message }}
                         @enderror
-
                     </div>
                 </div>
             </div>
@@ -56,7 +52,6 @@ asset('storage/' . $profile['image']) : asset('img/default.jpg') }}"
                         @error('postal_code')
                         {{ $message }}
                         @enderror
-
                     </div>
                 </div>
             </div>
@@ -72,7 +67,6 @@ asset('storage/' . $profile['image']) : asset('img/default.jpg') }}"
                         @error('address')
                         {{ $message }}
                         @enderror
-
                     </div>
                 </div>
             </div>
@@ -84,10 +78,8 @@ asset('storage/' . $profile['image']) : asset('img/default.jpg') }}"
                     <div class="form__input--text">
                         <input type="text" name="building" value="{{ old('building') }}" />
                     </div>
-
                 </div>
             </div>
-
             <input class="profile-form__btn" type="submit" value="更新する">
         </form>
     </div>

@@ -32,8 +32,8 @@ class ItempurchaseTest extends TestCase
             'condition_id' => $condition->id,
             'is_sold' => false,
         ]);
-       
-        
+
+
         $response = $this->actingAs($user)->post("/purchase/{$item->id}", [
             'content' => 'カード払い',
             'postal_code' => '123-4567',
@@ -41,10 +41,10 @@ class ItempurchaseTest extends TestCase
             'building' => 'サンプルビル101',
 
         ]);
-       
+
         $response->assertStatus(302);
         $response->assertRedirect("/");
-        
+
 
         $this->assertDatabaseHas('payments', [
             'item_id' => $item->id,
@@ -65,13 +65,13 @@ class ItempurchaseTest extends TestCase
         $profile = Profile::factory()->create(['user_id' => $user->id]);
         $condition = Condition::factory()->create();
 
-        
+
         $item = Item::factory()->create([
             'condition_id' => $condition->id,
             'is_sold' => false,
         ]);
 
-       
+
         $this->actingAs($user)->post("/purchase/{$item->id}", [
             'content' => 'カード払い',
             'postal_code' => '123-4567',
@@ -79,10 +79,10 @@ class ItempurchaseTest extends TestCase
             'building' => 'サンプルビル101',
         ]);
 
-       
+
         $response = $this->get('/');
 
-       
+
         $response->assertStatus(200);
         $response->assertSeeText('Sold');
     }
@@ -101,7 +101,7 @@ class ItempurchaseTest extends TestCase
             'name' => 'テスト商品A',
         ]);
 
-       
+
         $this->actingAs($user)->post("/purchase/{$item->id}", [
             'content' => 'カード払い',
             'postal_code' => '123-4567',
@@ -116,4 +116,3 @@ class ItempurchaseTest extends TestCase
         $response->assertSeeText('テスト商品A');
     }
 }
- 

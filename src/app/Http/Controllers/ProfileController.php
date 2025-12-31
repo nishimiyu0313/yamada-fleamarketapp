@@ -47,23 +47,22 @@ class ProfileController extends Controller
         return view('profile.edit', compact('profile'));
     }
     public function updateProfile(ProfileRequest $request)
-        
-    {       
+
+    {
         $profile = Auth::user()->profile;
 
         $profile->name = $request->input('name');
         $profile->postal_code = $request->input('postal_code');
         $profile->address =  $request->input('address');
         $profile->building =  $request->input('building');
-       
+
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('images', 'public');
             $profile->image = $path;
         }
-        
+
         $profile->save();
-       // dd('profile');
-        
+
         return redirect('/mypage/sell');
     }
     public function  address($id)
@@ -75,32 +74,31 @@ class ProfileController extends Controller
 
     public function updateAddress(AddressRequest $request, $item_id)
     {
-    $user = Auth::user();
+        $user = Auth::user();
 
-    $request->validate([
-        'postal_code' => 'required|string',
-        'address' => 'required|string',
-        'building' => 'nullable|string',
-    ]);
+        $request->validate([
+            'postal_code' => 'required|string',
+            'address' => 'required|string',
+            'building' => 'nullable|string',
+        ]);
 
-   
-    $payment = Payment::firstOrNew([
-        'user_id' => $user->id,
-        'item_id' => $item_id,
-    ]);
 
-    $payment->postal_code = $request->postal_code;
-    $payment->address = $request->address;
-    $payment->building = $request->building;
-    $payment->status = Payment::STATUS_ADDRESS_PENDING;
+        $payment = Payment::firstOrNew([
+            'user_id' => $user->id,
+            'item_id' => $item_id,
+        ]);
 
-    if (is_null($payment->content)) {
-        $payment->content = '';  
+        $payment->postal_code = $request->postal_code;
+        $payment->address = $request->address;
+        $payment->building = $request->building;
+        $payment->status = Payment::STATUS_ADDRESS_PENDING;
+
+        if (is_null($payment->content)) {
+            $payment->content = '';
+        }
+
+        $payment->save();
+
+        return redirect("/purchase/{$item_id}");
     }
-
-    $payment->save();
-
-    return redirect("/purchase/{$item_id}");
-}    }
-
-
+}

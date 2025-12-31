@@ -15,8 +15,8 @@ class MylistTest extends TestCase
 
     public function test_いいねした商品だけが表示される()
     {
-         /** @var \App\Models\User $user */
-       
+        /** @var \App\Models\User $user */
+
 
         $user = User::factory()->create();
 
@@ -80,7 +80,7 @@ class MylistTest extends TestCase
         $ownItem = Item::factory()->create([
             'name' => '自分の商品',
             'condition_id' => $condition->id,
-            'user_id' => $user->id, 
+            'user_id' => $user->id,
         ]);
 
         $otherUser = User::factory()->create();
@@ -105,7 +105,4 @@ class MylistTest extends TestCase
 
         $response->assertRedirect('/login');
     }
-
-
-
 }

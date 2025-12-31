@@ -16,7 +16,6 @@ class ItemgetTest extends TestCase
     public function test_商品が表示される()
     {
         /** @var \App\Models\User $user */
-        
 
         $user = User::factory()->create();
 
@@ -33,13 +32,12 @@ class ItemgetTest extends TestCase
             'is_sold' => false,
         ]);
 
-
         $response = $this->get('/');
 
-       
+
         $response->assertStatus(200);
 
-       
+
         foreach ($items as $item) {
             $response->assertSee($item->name);
         }
@@ -49,7 +47,6 @@ class ItemgetTest extends TestCase
         $user = User::factory()->create();
         $condition = Condition::factory()->create();
 
-      
         $item = Item::factory()->create([
             'user_id' => $user->id,
             'condition_id' => $condition->id,
@@ -63,15 +60,13 @@ class ItemgetTest extends TestCase
 
         $response = $this->get('/');
 
-        
+
         $response->assertStatus(200);
 
-      
+
         $response->assertSee($item->name);
 
-        
+
         $response->assertSee('Sold');
     }
-
-  
 }

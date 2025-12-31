@@ -29,7 +29,7 @@ class CommentTest extends TestCase
 
         $response->assertStatus(302);
 
-        
+
         $this->assertDatabaseHas('comments', [
             'user_id' => $user->id,
             'item_id' => $item->id,
@@ -39,7 +39,7 @@ class CommentTest extends TestCase
     public function test_ログイン前のユーザーはコメントを送信できない()
     {
 
-        
+
         $condition = Condition::factory()->create();
         $item = Item::factory()->create(['condition_id' => $condition->id]);
 
@@ -56,7 +56,6 @@ class CommentTest extends TestCase
         $this->assertDatabaseMissing('comments', [
             'content' => 'ログインしていないコメント',
         ]);
-       
     }
 
     public function test_コメントが入力されていない場合、バリデーションメッセージが表示される()
@@ -67,21 +66,21 @@ class CommentTest extends TestCase
         $condition = Condition::factory()->create();
         $item = Item::factory()->create(['condition_id' => $condition->id]);
 
-       
+
         $commentData = [
             'content' => '',
         ];
 
-        
+
         $response = $this->actingAs($user)->post("/item/{$item->id}/comments", $commentData);
 
-       
+
         $response->assertStatus(302);
 
-        
+
         $response->assertSessionHasErrors(['content']);
 
-       
+
         $this->assertDatabaseMissing('comments', [
             'user_id' => $user->id,
             'item_id' => $item->id,
@@ -97,7 +96,7 @@ class CommentTest extends TestCase
         $condition = Condition::factory()->create();
         $item = Item::factory()->create(['condition_id' => $condition->id]);
 
-        
+
         $longComment = str_repeat('あ', 256);
 
         $commentData = [

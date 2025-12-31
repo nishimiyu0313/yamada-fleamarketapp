@@ -52,15 +52,11 @@
                 <div class="form__group-content">
                     <div class="form__input--text">
                         <input type="text" name="building" value="{{  $payment->building ?? $profile->building ?? '' }}" />
-
-
                     </div>
                     <div class="form__error">
-
                     </div>
                 </div>
             </div>
-
             <input class="profile-form__btn" type="submit" value="更新する">
         </form>
     </div>

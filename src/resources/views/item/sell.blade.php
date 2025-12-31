@@ -19,8 +19,6 @@
             <label for="image" class="file-button">画像を選択する</label>
             <input type="file" id="image" name="image" class="file-input" required>
             <img src="" id="preview" class="sell-form__img">
-
-
             <script src="{{ asset('js/image-preview.js') }}"></script>
             <div class="register-form__error-message">
                 @error('image')
@@ -69,7 +67,6 @@
                     @enderror
                 </div>
             </div>
-
 
             <h2>商品名と説明</h2>
             <div class="form__group">
@@ -127,7 +124,6 @@
                     @enderror
 
                 </div>
-
             </div>
         </div>
         <input class="sell-form__btn" type="submit" value="出品する">

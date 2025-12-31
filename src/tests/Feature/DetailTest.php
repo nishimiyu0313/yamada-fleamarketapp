@@ -25,26 +25,26 @@ class DetailTest extends TestCase
         $condition = Condition::factory()->create();
         $category = Category::factory()->create();
 
-        
+
         $item = Item::factory()->create([
             'name' => '青いりんご',
             'brand_name' => 'Apple Inc.',
             'price' => 1000,
             'description' => '新鮮な青いりんごです。',
             'condition_id' => $condition->id,
-            
+
             'image' => 'sample.jpg',
         ]);
 
         $item->categories()->attach($category->id);
 
-        
+
         $likeUsers = User::factory()->count(3)->create();
         foreach ($likeUsers as $likeUser) {
             $likeUser->likedItems()->attach($item->id);
         }
 
-       
+
         $commentUsers = User::factory()->count(2)->create();
 
         foreach ($commentUsers as $commentUser) {
@@ -61,29 +61,29 @@ class DetailTest extends TestCase
             ]);
         }
 
-        
+
         $response = $this->actingAs($user)->get('/item/' . $item->id);
 
-       
+
         $response->assertSee('sample.jpg');
 
-        
+
         $response->assertSee('青いりんご');
         $response->assertSee('Apple Inc.');
         $response->assertSee('1000');
         $response->assertSee('新鮮な青いりんごです。');
 
-        
+
         $response->assertSee($category->name);
         $response->assertSee($condition->name);
 
-        
+
         $response->assertSee('3');
 
-        
+
         $response->assertSee('2');
 
-       
+
         foreach ($commentUsers as $commentUser) {
             $response->assertSee($commentUser->profile->name);
             $response->assertSee('コメントテスト');
@@ -103,20 +103,18 @@ class DetailTest extends TestCase
             'condition_id' => $condition->id,
         ]);
 
-        $categories = Category::factory()->count(3)->create([
-           
-        ]);
-      
-    
+        $categories = Category::factory()->count(3)->create([]);
+
+
         $item->categories()->attach($categories->pluck('id'));
 
-        
+
         $response = $this->actingAs($user)->get('/item/' . $item->id);
 
-       
+
         foreach ($categories as $category) {
-        
+
             $response->assertSee($category->content);
         }
     }
-    }
+}

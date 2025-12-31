@@ -16,7 +16,7 @@ class UserloginTest extends TestCase
         $response = $this->post('/login', [
             'email' => '',
             'password' => 'password123',
-            
+
         ]);
 
         $response->assertSessionHasErrors('email');
@@ -30,7 +30,7 @@ class UserloginTest extends TestCase
         $response = $this->post('/login', [
             'email' => 'test@example.com',
             'password' => '',
-            
+
         ]);
 
         $response->assertSessionHasErrors('password');
@@ -44,7 +44,7 @@ class UserloginTest extends TestCase
         $response = $this->post('/login', [
             'email' => 'test@example.com',
             'password' => 'wrongpassword',
-           
+
         ]);
 
         $response->assertSessionHasErrors('email');
@@ -61,16 +61,16 @@ class UserloginTest extends TestCase
             'password' => bcrypt('password123'),
         ]);
 
-        
+
         $response = $this->post('/login', [
             'email' => 'test@example.com',
             'password' => 'password123',
         ]);
 
-    
+
         $this->assertAuthenticatedAs($user);
 
-        
-        $response->assertRedirect('/'); 
+
+        $response->assertRedirect('/');
     }
 }

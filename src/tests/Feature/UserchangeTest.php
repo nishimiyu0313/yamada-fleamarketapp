@@ -40,6 +40,5 @@ class UserchangeTest extends TestCase
         $response->assertSee('123-4567');
         $response->assertSee('東京都新宿区西新宿2-8-1');
         $response->assertSee('新宿ビル101');
-       
     }
-    }
+}
