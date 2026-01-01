@@ -1,7 +1,9 @@
 ## アプリケーション名
+
 フリマアプリ
 
 ## 環境構築
+
 ```
 Dockerビルド
 1.git clone <リポジトリURL>
@@ -36,7 +38,9 @@ DBのテーブルにダミーデータを投入
 7 ストレージに保存したファイルを表示するためシンボリックリンクを作成
 php artisan storage:link
 ```
+
 ## テストユーザ
+
 ```
 ダミー商品は、ユーザ１がすべて出品しているので
 ユーザ２でログインすると出品商品が見れます
@@ -53,6 +57,7 @@ password:password123
 ```
 
 ## テスト環境構築
+
 ```
 テスト用データベースの作成
 docker-compose exec mysql bash
@@ -79,7 +84,9 @@ php artisan migrate --env=testing
 テストの実行
 php artisan test
 ```
+
 ## 使用技術
+
 ```
 ・PHP8.0
 ・laravel 10.0
@@ -87,10 +94,12 @@ php artisan test
 ```
 
 ## URL
+
 ```
 ・環境構築：http://localhost/
 ・phpMyAdmin:http://localhost:8080/
 ```
 
-## ER図
+## ER 図
+
 ![ER図](ER.png)
