@@ -1,5 +1,5 @@
 ## アプリケーション名
-coachtechフリマ
+フリマアプリ
 
 ## 環境構築
 ```
@@ -44,12 +44,12 @@ php artisan storage:link
 ユーザ１
 name：山田太郎
 email：test@email
-password:coachtech
+password:password123
 
 ユーザ２
 name：山田次郎
 email：test2@email
-password:coachtech
+password:password123
 ```
 
 ## テスト環境構築
