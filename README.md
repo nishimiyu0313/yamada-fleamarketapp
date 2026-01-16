@@ -88,8 +88,8 @@ php artisan test
 ## 使用技術
 
 ```
-・PHP8.0
-・laravel 10.0
+・PHP 8.1
+・laravel 8.0
 ・MySQL 8.0
 ```
 
