@@ -7,7 +7,6 @@ use App\Http\Requests\ExhibitionRequest;
 use App\Http\Requests\CommentRequest;
 use App\Models\Item;
 use App\Models\Profile;
-use App\Models\User;
 use App\Models\Comment;
 use App\Models\Condition;
 use App\Models\Category;
@@ -74,17 +73,6 @@ class ItemController extends Controller
         return redirect()->back();
     }
 
-    public function likedItems()
-    {
-        /** @var \App\Models\User $user */
-        $user = Auth::user();
-
-        $items = $user->likedItems()
-            ->orderBy('pivot_created_at', 'desc')
-            ->get();
-
-        return view('items.index', compact('items'));
-    }
 
     public function commentStore(CommentRequest $request, Item $item)
     {
